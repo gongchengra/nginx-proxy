@@ -1,6 +1,9 @@
-FROM nginx:1.9.2
-MAINTAINER Jason Wilder jwilder@litl.com
+FROM nginx:latest
+MAINTAINER Alan gongchengra@gmail.com
 
+RUN cd /etc/apt \
+        && sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' sources.list \
+        && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C
 # Install wget and install/updates certificates
 RUN apt-get update \
  && apt-get install -y -q --no-install-recommends \
